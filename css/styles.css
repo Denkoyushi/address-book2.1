@@ -1,0 +1,34 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+	background-color: black;
+}
+
+.container {
+	width: 800px;
+	margin: 30px auto;
+	padding: 20px;
+	background-color: white;
+}
+
+#show-contact {
+  display: none;
+}
+
+.contact {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.contact:hover {
+  text-decoration: underline;
+}
+
+.new-address {
+  padding: 5px 0 0 0;
+  border-top: 1px solid black;
+}
