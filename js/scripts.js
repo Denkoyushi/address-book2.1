@@ -86,9 +86,13 @@ $(document).ready(function() {
     newContact.addresses = [];
     newContact.phoneNums = [];
 
-    var validForm = true;
+    var formElements = 0;
+    var validFormElements = 0;
 
     $(".new-address").each(function() {
+
+      formElements += 1;
+
       var inputtedStreet = $(this).find("input.new-street").val();
       var inputtedCity = $(this).find("input.new-city").val();
       var inputtedState = $(this).find("input.new-state").val();
@@ -99,29 +103,30 @@ $(document).ready(function() {
 
       if(!newAddress.validCity()) {
         alert('Bad city');
-        validForm = false;
       } else if (!newAddress.validState()) {
         alert('Bad state');
-        validForm = false;
       } else {
+        validFormElements += 1;
         newContact.addresses.push(newAddress);
-      }   
+      }  
+    });
 
     $("#new-phones input.new-phone").each(function() {
+      formElements += 1;
+
       var inputtedPhone = $(this).val();
       var newPhone = Object.create(Phone);
       newPhone.number = inputtedPhone;
 
       if (!newPhone.validPhone()) {
-        alert('Invalid Phone Number')
-        validForm = false;
+        alert('Invalid Phone Number');
       } else {
-        //validForm = true;
+        validFormElements += 1;
         newContact.phoneNums.push(newPhone);
       }
     });
 
-    if (validForm) {
+    if (validFormElements === formElements) {
       $('ul#contacts').append('<li><span class="contact">' + newContact.fullName() + '</span></li>')
     }
 
